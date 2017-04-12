@@ -43,7 +43,13 @@ def render_template(cwd, template_path, context):
     """
     env = jinja2.Environment(
         loader=FilePathLoader(cwd),
-        undefined=jinja2.StrictUndefined # raises errors for undefined variables
+        undefined=jinja2.StrictUndefined, # raises errors for undefined variables
+	block_start_string='<%',
+        block_end_string='%>',
+        variable_start_string='<%=',
+        variable_end_string='%>',
+        comment_start_string='<%#',
+        comment_end_string='%>'
     )
 
     # Register extras
